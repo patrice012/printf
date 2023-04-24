@@ -1,5 +1,14 @@
 #include "main.h"
-char *_itoa (int num, char *str)
+
+/**
+  * _itoa - convert integer to char
+  * @num: int arg
+  * @str: pointer to  char
+  * Return:  pointer to char
+  */
+
+
+char *_itoa(int num, char *str)
 {
 	int i = 0, sign = 0;
 

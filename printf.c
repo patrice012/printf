@@ -4,6 +4,26 @@
 
 #include "main.h"
 
+
+/**
+  * is_printable - check if the input data is printable
+  * @format: the current format of the current input
+  * Return: -1 if false
+  */
+
+
+int is_printable(const char *format)
+{
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	return (0);
+}
+
+
+
+
 /**
  * _printf - produces output according to a format
  * @format: format string containing the characters and the specifiers
@@ -14,20 +34,15 @@
 
 int _printf(const char *format, ...)
 {
-	int (*pfunc)(va_list, flags_t *);
+	int (*pfunc)(va_list);
 	const char *p;
-	va_list op;
+	va_list op_arg;
 	/*flags_t flags = {0, 0, 0};*/
 
 	int count = 0;
 
-	va_start(arguments, format);
-
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+	va_start(op_arg, format);
+	is_printable(format);
 
 	for (p = format; *p; p++)
 	{
@@ -45,13 +60,18 @@ int _printf(const char *format, ...)
 			 *	p++;
 			 */
 			pfunc = get_print(*p);
-			count += (pfunc)
-				? pfunc(arguments, &flags)
-				: _printf("%%%c", *p);
+
+			if (pfunc)
+			{
+				count += pfunc(op_arg);
+			}
+			else
+				count += _printf("%%%c", *p);
+
 		} else
 			count += _putchar(*p);
 	}
 	_putchar(-1);
-	va_end(arguments);
+	va_end(op_arg);
 	return (count);
 }
