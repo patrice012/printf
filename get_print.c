@@ -1,5 +1,22 @@
+#include <stdio.h>
 #include <stddef.h>
 #include "main.h"
+
+
+
+/**
+  * get_len - return the length of array
+  * @arr_size: array of element
+  * @f_func: base dat type of the element
+  * Return: int
+  */
+
+
+int get_len(size_t arr_size, f_func f)
+{
+	return (arr_size / sizeof(f));
+}
+
 
 /**
  * get_print - selects the right printing function
@@ -17,8 +34,8 @@ int (*get_print(char s))(va_list)
 		{'s', print_string},
 		{'c', print_char},
 		};
-	int flags = 2;
 
+	int flags = get_len(sizeof(func_arr), func_arr[0]);
 	register int i;
 
 	for (i = 0; i < flags; i++)
