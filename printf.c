@@ -39,6 +39,19 @@ int _printf(const char *format, ...)
 							printed_chars += _putchar(str[i]);
 						break;
 					}
+
+				case 'd':
+				case 'i':
+				{
+					char num_str[32];
+					int num = va_arg(args, int);
+
+					_itoa(num, num_str);
+					printed_chars += _puts(num_str);
+
+					break;
+				}
+
 				case '%':
 					printed_chars += _putchar('%');
 					break;
