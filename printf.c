@@ -5,67 +5,53 @@
 #include "main.h"
 
 /**
- * _printf - produces output according to a format.
- * @format: A string containing zero or more directives.
- *
- * Return: The number of characters printed (excluding the null byte used to end output to strings).
+ * _printf - produces output according to a format
+ * @format: format string containing the characters and the specifiers
+ * Description: this function will call the get_print()
+ * Return: length of the formatted output string
  */
+
+
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int printed_chars = 0;
+	int (*pfunc)(va_list, flags_t *);
+	const char *p;
+	va_list op;
+	/*flags_t flags = {0, 0, 0};*/
 
-	va_start(args, format);
+	int count = 0;
 
-	while (*format)
+	va_start(arguments, format);
+
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+
+	for (p = format; *p; p++)
 	{
-		if (*format == '%')
+		if (*p == '%')
 		{
-			format++;
-			switch (*format)
+			p++;
+			if (*p == '%')
 			{
-				case 'c':
-					printed_chars += _putchar(va_arg(args, int));
-					break;
-				case 's':
-					{
-						char *str = va_arg(args, char *);
-						int i;
-
-						if (str == NULL)
-							str = "(null)";
-
-						for (i = 0; str[i]; i++)
-							printed_chars += _putchar(str[i]);
-						break;
-					}
-
-				case 'd':
-				case 'i':
-				{
-					char num_str[32];
-					int num = va_arg(args, int);
-
-					_itoa(num, num_str);
-					printed_chars += _puts(num_str);
-
-					break;
-				}
-
-				case '%':
-					printed_chars += _putchar('%');
-					break;
-				default:
-					printed_chars += _putchar('%');
-					printed_chars += _putchar(*format);
+				count += _putchar('%');
+				continue;
 			}
-		}
-		else
-			printed_chars += _putchar(*format);
 
-		format++;
+			/*
+			 *while (get_flag(*p, &flags))
+			 *	p++;
+			 */
+			pfunc = get_print(*p);
+			count += (pfunc)
+				? pfunc(arguments, &flags)
+				: _printf("%%%c", *p);
+		} else
+			count += _putchar(*p);
 	}
-	va_end(args);
-
-	return (printed_chars);
+	_putchar(-1);
+	va_end(arguments);
+	return (count);
 }

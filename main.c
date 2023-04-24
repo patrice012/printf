@@ -3,11 +3,9 @@
 #include "main.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0
+  * main - The entry point of the program
+  * Return: int .
  */
-
 int main(void)
 {
 	int len;

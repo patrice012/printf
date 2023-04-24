@@ -1,24 +1,20 @@
 #include <stddef.h>
 #include "main.h"
 
-
 /**
- * _puts - writes a string to stdout
- * @str: The string to print
- *
- * Return: The number of characters printed.
+  * _puts - the function name
+  * @str: parameter of type char *.
+  * Return: int .
  */
-
-
 int _puts(char *str)
 {
 	int i;
 
 	if (str == NULL)
+	{
 		str = "(null)";
-
-	for (i = 0; str[i]; i++)
+	}
+	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
-
 	return (i);
 }
