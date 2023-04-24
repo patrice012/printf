@@ -7,7 +7,7 @@
 /**
   * get_len - return the length of array
   * @arr_size: array of element
-  * @f_func: base dat type of the element
+  * @f: base data type of the element
   * Return: int
   */
 
@@ -36,6 +36,7 @@ int (*get_print(char s))(va_list)
 		};
 
 	int flags = get_len(sizeof(func_arr), func_arr[0]);
+
 	register int i;
 
 	for (i = 0; i < flags; i++)
