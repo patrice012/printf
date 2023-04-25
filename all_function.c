@@ -18,11 +18,13 @@ int print_char(va_list arg)
 	return (count);
 }
 
+
 /**
  * print_str - print a string
  * @arg: argument list
  * Return: length of the string
  */
+
 int print_str(va_list arg)
 {
 	char *str, *str2;
@@ -57,24 +59,25 @@ int print_str(va_list arg)
 	return (count);
 }
 
+
 /**
  * print_cent - print percentage
  * @arg: argument list
  * Return: length of the argument
  */
-int print_cent(va_list arg)
+int print_cent(va_list arg __attribute__((unused)))
 {
-	va_list percent;
+	/*va_list percent;*/
 	int count = 0;
 	char c;
 
-	va_copy(percent, arg);
+	/*va_copy(percent, arg);*/
 
-	c = va_arg(percent, int);
+	/*c = va_arg(percent, int);*/
 	c = '%';
 
 	count += _putchar(c);
-	va_end(percent);
+	/*va_end(percent);*/
 	return (count);
 }
 

@@ -7,13 +7,19 @@
 #include <limits.h>
 
 int _printf(const char *format, ...);
+
 int (*select_func(const char *c))(va_list arg);
+
+
 int print_char(va_list arg);
 int print_str(va_list arg);
 int print_cent(va_list arg);
 int print_dec(va_list arg);
 int print_int(va_list arg);
+
+
 int _putchar(char c);
+/*int _puts(char *str)*/
 int _abs(int n);
 
 /**
