@@ -2,42 +2,29 @@
 #define MAIN_H
 
 #include <stdarg.h>
-
-#define BUFF_SIZE 1024
-
-
-
- /**
-   * struct formatFunction - struct to choose the right function depending
-   * on the format specifier passed to _printf()
-   * @c: format specifier
-   * @f: pointer to the correct printing function
-  */
-
-struct formatFunction
-{
-	char c;
-	int (*f)(va_list ap);
-};
-
-typedef struct formatFunction f_func;
-
-
+#include <stddef.h>
+#include <unistd.h>
+#include <limits.h>
 
 int _printf(const char *format, ...);
-/*int _putchar(char buffer[], int *buff_size);*/
+int (*check_specifier(const char *c))(va_list arg);
+int print_char(va_list arg);
+int print_str(va_list arg);
+int print_cent(va_list arg);
+int print_dec(va_list arg);
+int print_int(va_list arg);
 int _putchar(char c);
-char *_itoa(int num, char *str);
-int _puts(char *str);
+int _abs(int n);
 
-/* print str */
-int print_char(va_list l);
-int print_string(va_list l);
-
-/* print digits */
-int print_int(va_list l, ...);
-
-/* get_print */
-int (*get_print(char s))(va_list);
+/**
+ * struct argsList - structure for our format and the corresponding function
+ * @ch: pointer to a character
+ * @f: pointer to a function
+ */
+typedef struct argsList
+{
+	char *ch;
+	int (*f)(va_list arg);
+} args_t;
 
 #endif
