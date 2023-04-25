@@ -3,7 +3,7 @@
 
 #include <stdarg.h>
 
-#define BUFF_SIZE 1024
+/*#define BUFF_SIZE 1024*/
 
 
 /**
@@ -13,13 +13,14 @@
  * @space: flag for the ' ' character
  * @hash: flag for the '#' character
  */
-typedef struct flags
+
+/*typedef struct flags
 {
 	int plus;
 	int space;
 	int hash;
 } flags_t;
-
+*/
 
 
 /**
@@ -61,6 +62,6 @@ char *convert(unsigned long int num, int base, int lowercase);
 int (*get_print(char s))(va_list, ...);
 
 /* get_flag */
-int get_flag(char s, flags_t *f);
+/*int get_flag(char s, flags_t *f);*/
 
 #endif

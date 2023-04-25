@@ -11,18 +11,22 @@
 int print_int(va_list l, ...)
 {
 	va_list arg;
-	int n = va_arg(l, int);
-	int res = count_digit(n);
+	unsigned int n, res;
 
-	flags_t f = va_arg(arg, flags_t);
 	va_start(arg, l);
+	n = va_arg(l, int);
+	res = count_digit(n);
 
-	if (f.space == 1 && f.plus == 0 && n >= 0)
-		res += _putchar(' ');
-	if (f.plus == 1 && n >= 0)
-		res += _putchar('+');
-	if (n <= 0)
-		res++;
+	/*flags_t f = va_arg(arg, flags_t);*/
+
+	/*
+	*if (f.space == 1 && f.plus == 0 && n >= 0)
+	*	res += _putchar(' ');
+	*if (f.plus == 1 && n >= 0)
+	*	res += _putchar('+');
+	*if (n <= 0)
+	*	res++;
+	*/
 	print_number(n);
 	return (res);
 }
