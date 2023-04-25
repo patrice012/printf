@@ -37,7 +37,6 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			/*value = _putchar(format[i]);*/
 			count += _putchar(format[i]);;
 			i++;
 			continue;
@@ -47,14 +46,15 @@ int _printf(const char *format, ...)
 			func = select_func(&format[i + 1]);
 			if (func != NULL)
 			{
-				/*value = func(arg);*/
 				count += func(arg);
+
+				/* if format[i] is % and format[i+1] is valid formater go to format[i+2] */
 				i += 2;
 				continue;
 			}
 			else
 			{
-				/*value = _putchar(format[i]);*/
+				/* if format[i] is not a valid format then print it's value */
 				count += _putchar(format[i]);
 				i++;
 				continue;
@@ -64,3 +64,4 @@ int _printf(const char *format, ...)
 	va_end(arg);
 	return (count);
 }
+
