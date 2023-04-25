@@ -31,13 +31,13 @@ int _printf(const char *format, ...)
 	va_start(arg, format);
 	i = 0;
 
-	is_printable(format);
+	/*is_printable(format);*/
 
 	while (*(format + i))
 	{
 		if (format[i] != '%')
 		{
-			count += _putchar(format[i]);;
+			count += _putchar(format[i]);
 			i++;
 			continue;
 		}

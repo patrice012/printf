@@ -17,7 +17,7 @@ int get_len(size_t arr_size, f_func f)
 
 
 /**
- * check_specifier - return a pionter with the matching format
+ * select_func - return a function pionter with the matching format
  * @c: format specifier
  * Return: pointer a pointer to a function
  */
