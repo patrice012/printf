@@ -1,8 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-
 #include <stdarg.h>
+
 #define BUFF_SIZE 1024
 
 
@@ -29,8 +29,13 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 char *_itoa(int num, char *str);
 int _puts(char *str);
+
+/* print str */
 int print_char(va_list l);
 int print_string(va_list l);
+
+/* print digits */
+int print_int(va_list l, ...);
 
 /* get_print */
 int (*get_print(char s))(va_list);

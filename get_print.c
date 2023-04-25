@@ -33,6 +33,7 @@ int (*get_print(char s))(va_list)
 	f_func func_arr[] = {
 		{'s', print_string},
 		{'c', print_char},
+		{'d', print_int},
 		};
 
 	int flags = get_len(sizeof(func_arr), func_arr[0]);
