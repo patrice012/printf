@@ -28,19 +28,20 @@ int get_len(size_t arr_size, f_func f)
  * printing function
  * Return: a pointer to the matching printing function
  */
-int (*get_print(char s))(va_list)
+int (*get_print(char s))(va_list, ...)
 {
 	f_func func_arr[] = {
 		{'s', print_string},
 		{'c', print_char},
+		{'i', print_int},
 		{'d', print_int},
 		};
 
-	int flags = get_len(sizeof(func_arr), func_arr[0]);
+	int len = get_len(sizeof(func_arr), func_arr[0]);
 
 	register int i;
 
-	for (i = 0; i < flags; i++)
+	for (i = 0; i < len; i++)
 		if (func_arr[i].c == s)
 			return (func_arr[i].f);
 	return (NULL);

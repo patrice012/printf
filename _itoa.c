@@ -10,11 +10,11 @@
 
 char *_itoa(int num, char *str)
 {
-	int i = 0, sign = 0;
+	int i = 0; /*sign = 0;*/
 
 	if (num < 0)
 	{
-		sign = 1;
+		/*sign = 1;*/
 		num = -num;
 	}
 	do {

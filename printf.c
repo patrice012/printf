@@ -34,10 +34,10 @@ int is_printable(const char *format)
 
 int _printf(const char *format, ...)
 {
-	int (*pfunc)(va_list);
+	int (*pfunc)(va_list, ...);
 	const char *p;
 	va_list op_arg;
-	/*flags_t flags = {0, 0, 0};*/
+	flags_t flags = {0, 0, 0};
 
 	int count = 0;
 
@@ -55,15 +55,13 @@ int _printf(const char *format, ...)
 				continue;
 			}
 
-			/*
-			 *while (get_flag(*p, &flags))
-			 *	p++;
-			 */
+			while (get_flag(*p, &flags))
+				p++;
 			pfunc = get_print(*p);
 
 			if (pfunc)
 			{
-				count += pfunc(op_arg);
+				count += pfunc(op_arg, &flags);
 			}
 			else
 				count += _printf("%%%c", *p);
