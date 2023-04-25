@@ -6,39 +6,39 @@
  */
 int _printf(const char *format, ...)
 {
-    va_list arg;
-    int i, count = 0, value, (*func)(va_list);
+	va_list arg;
+	int i, count = 0, value, (*func)(va_list);
 
-    va_start(arg, format);
-    i = 0;
-    while (*(format + i))
-    {
-        if (format[i] != '%')
-        {
-            value = _putchar(format[i]);
-            count += value;
-            i++;
-            continue;
-        }
-        if (format[i] == '%')
-        {
-            func = select_func(&format[i + 1]);
-            if (func != NULL)
-            {
-                value = func(arg);
-                count += value;
-                i += 2;
-                continue;
-            }
-            else
-            {
-                value = _putchar(format[i]);
-                count += value;
-                i++;
-                continue;
-            }
-        }
-    }
-    va_end(arg);
-    return (count);
+	va_start(arg, format);
+	i = 0;
+	while (*(format + i))
+	{
+		if (format[i] != '%')
+		{
+			value = _putchar(format[i]);
+			count += value;
+			i++;
+			continue;
+		}
+		if (format[i] == '%')
+		{
+			func = select_func(&format[i + 1]);
+			if (func != NULL)
+			{
+				value = func(arg);
+				count += value;
+				i += 2;
+				continue;
+			}
+			else
+			{
+				value = _putchar(format[i]);
+				count += value;
+				i++;
+				continue;
+			}
+		}
+	}
+	va_end(arg);
+	return (count);
 }
