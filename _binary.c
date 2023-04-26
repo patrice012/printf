@@ -1,29 +1,27 @@
 #include "main.h"
-
+#include <stdlib.h>
 
 /**
   * _binary - convert and print the binary format
-  * @num: number to convert
+  * @x: number to convert
   * Return: number of bytes written
  */
 
 
-int _binary(unsigned int num)
+char *_binary(unsigned int x)
 {
-	int n = 0;
+	char *binary = malloc(sizeof(char) * 33);
+	int i;
 
-	if (num == 0)
+	for (i = 31; i >= 0; i--)
 	{
-		char s = '0';
-		return (_putchar(s));
+		int bit = (x >> i) & 1;
+
+		binary[31 - i] = bit ? '1' : '0';
 	}
 
-	if (num > 1)
-		_binary(num >> 1);
-
-	n += _putchar((num % 2 != 0) ? '1' : '0');
-
-	return (n);
+	binary[32] = '\0';
+	return (binary);
 }
 
 
@@ -36,12 +34,30 @@ int _binary(unsigned int num)
 
 int print_binary(va_list arg)
 {
-	unsigned int value = va_arg(arg, unsigned int);
+	unsigned int n, m, i, sum;
+	unsigned int a[32];
+	int count;
 
-	if (!value)
+	n = va_arg(arg, unsigned int);
+	m = 2147483648; /* (2 ^ 31) */
+	a[0] = n / m;
+	i = 1;
+	while (i < 32)
 	{
-		return (-1);
+		m /= 2;
+		a[i] = (n / m) % 2;
+		i++;
 	}
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
+	{
+		sum += a[i];
+		if (sum || i == 31)
+		{
+			char z = '0' + a[i];
 
-	return (_binary(value));
+			write(1, &z, 1);
+			count++;
+		}
+	}
+	return (count);
 }
