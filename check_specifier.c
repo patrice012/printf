@@ -39,7 +39,7 @@ int (*select_func(const char *c))(va_list args)
 		/* check if the current format is valid */
 		if (*(func_arr[i].ch) == *c)
 		{
-			/* return the right format base on the format */
+			/* return the right function base on the format */
 			return (func_arr[i].f);
 		}
 	}

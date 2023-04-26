@@ -22,6 +22,11 @@ int _putchar(char c);
 /*int _puts(char *str)*/
 int _abs(int n);
 
+
+/* helper functions */
+int break_number_into_array(long int numb, int *my_arr);
+int write_array_to_stdout(int *my_arr, int size);
+
 /**
  * struct argsList - structure for our format and the corresponding function
  * @ch: pointer to a character
