@@ -45,7 +45,7 @@ int print_str(va_list arg)
 		 *{
 		 *	value = _putchar(str2[i]);
 		 *	count += value;
-		 *}	
+		 *}
 		 */
 		count = _puts(str2);
 
