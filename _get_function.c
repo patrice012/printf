@@ -28,6 +28,7 @@ int (*select_func(const char *c))(va_list args)
 		{"%", print_cent},
 		{"d", print_dec},
 		{"i", print_int},
+		{"b", print_binary},
 		{NULL, NULL}
 	};
 

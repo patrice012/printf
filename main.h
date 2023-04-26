@@ -23,6 +23,10 @@ int _putchar(char c);
 int _abs(int n);
 
 
+/* binary */
+
+int print_binary(va_list arg);
+
 /* helper functions */
 int break_number_into_array(long int numb, int *my_arr);
 int write_array_to_stdout(int *my_arr, int size);
