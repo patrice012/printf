@@ -12,6 +12,12 @@ int _binary(unsigned int num)
 {
 	int n = 0;
 
+	if (num == 0)
+	{
+		char s = '0';
+		return (_putchar(s));
+	}
+
 	if (num > 1)
 		_binary(num >> 1);
 
