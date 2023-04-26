@@ -30,7 +30,7 @@ int _binary(unsigned int num)
 
 int print_binary(va_list arg)
 {
-	int value = va_arg(arg, int);
+	unsigned int value = va_arg(arg, unsigned int);
 
 	if (!value)
 	{
