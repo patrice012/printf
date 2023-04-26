@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0, (*func)(va_list);
 
 	va_start(arg, format);
-	/*is_printable(format);*/
+	is_printable(format);
 
 	while (*(format + i))
 	{
