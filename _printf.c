@@ -13,7 +13,7 @@ int is_printable(const char *format)
 	{
 		return (-1);
 	}
-	if (!format || (format[0] == '%' && !format[1]))
+	if (format[0] == '%' && !format[1])
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
@@ -28,17 +28,16 @@ int is_printable(const char *format)
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	int i = 0, count = 0, value, (*func)(va_list);
+	int i = 0, count = 0, (*func)(va_list);
 
 	va_start(arg, format);
-	is_printable(format);
+	/*is_printable(format);*/
 
 	while (*(format + i))
 	{
 		if (format[i] != '%')
 		{
-			value = _putchar(format[i]);
-			count += value;
+			count += _putchar(format[i]);
 			i++;
 			continue;
 		}
@@ -47,15 +46,13 @@ int _printf(const char *format, ...)
 			func = select_func(&format[i + 1]);
 			if (func != NULL)
 			{
-				value = func(arg);
-				count += value;
+				count += func(arg);
 				i += 2;
 				continue;
 			}
 			else
 			{
-				value = _putchar(format[i]);
-				count += value;
+				count += _putchar(format[i]);
 				i++;
 				continue;
 			}
