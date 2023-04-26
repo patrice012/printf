@@ -88,7 +88,7 @@ int print_int(va_list arg)
  * break_number_into_array - turn integer to array of integer
  * @numb: integer
  * @my_arr: pointer to array of interger
- * Return: number 
+ * Return: number
  */
 
 int break_number_into_array(long int numb, int *my_arr)
@@ -124,7 +124,10 @@ int write_array_to_stdout(int *my_arr, int size)
 
 	for (i = size; i > 0; i--)
 	{
-		/* convert integer to char by doing: '0' + my_char[i] and push the result into array */
+		/*
+		 *convert integer to char by doing: '0' + my_char[i] and
+		 *push the result into array
+		 */
 		x[0] = ('0' + my_arr[i]);
 		count += _putchar(x[0]);
 	}
