@@ -16,6 +16,10 @@ int print_str(va_list arg);
 int print_cent(va_list arg);
 int print_dec(va_list arg);
 int print_int(va_list arg);
+int print_decimal(va_list arg);
+int print_octal(va_list arg);
+int print_lower_hexadecimal(va_list arg);
+int print_upper_hexadecimal(va_list arg);
 
 
 int _putchar(char c);
@@ -30,6 +34,7 @@ int print_binary(va_list arg);
 /* helper functions */
 int break_number_into_array(long int numb, int *my_arr);
 int write_array_to_stdout(int *my_arr, int size);
+char *_uitoa(unsigned int num, unsigned int base, int is_uppercase);
 
 /**
  * struct argsList - structure for our format and the corresponding function

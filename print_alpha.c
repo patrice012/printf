@@ -40,13 +40,6 @@ int print_str(va_list arg)
 		str2 = va_arg(arg2, char *);
 		str2 = "(null)";
 
-		/*
-		 *for (i = 0; str2[i]; i++)
-		 *{
-		 *	value = _putchar(str2[i]);
-		 *	count += value;
-		 *}
-		 */
 		count = _puts(str2);
 
 		va_end(arg2);
@@ -55,14 +48,6 @@ int print_str(va_list arg)
 
 	count = _puts(str);
 
-	/*
-	 *i = 0;
-	 *while (*(str + i))
-	 *{
-	 *	count += _putchar(str[i]);
-	 *	i++;
-	 *}
-	 */
 	return (count);
 }
 

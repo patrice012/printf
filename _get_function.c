@@ -29,6 +29,10 @@ int (*select_func(const char *c))(va_list args)
 		{"d", print_dec},
 		{"i", print_int},
 		{"b", print_binary},
+		{"u", print_decimal},
+		{"o", print_octal},
+		{"x", print_lower_hexadecimal},
+		{"X", print_upper_hexadecimal},
 		{NULL, NULL}
 	};
 
