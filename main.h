@@ -19,7 +19,7 @@ int print_int(va_list arg);
 
 
 int _putchar(char c);
-/*int _puts(char *str)*/
+int _puts(char *str);
 int _abs(int n);
 
 

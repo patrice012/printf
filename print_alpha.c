@@ -28,7 +28,7 @@ int print_char(va_list arg)
 int print_str(va_list arg)
 {
 	char *str, *str2;
-	int count = 0, i, value = 0;
+	int count = 0; /*i ,value = 0;*/
 
 	str = va_arg(arg, char *);
 
@@ -40,21 +40,29 @@ int print_str(va_list arg)
 		str2 = va_arg(arg2, char *);
 		str2 = "(null)";
 
-		for (i = 0; str2[i]; i++)
-		{
-			value = _putchar(str2[i]);
-			count += value;
-		}
+		/*
+		 *for (i = 0; str2[i]; i++)
+		 *{
+		 *	value = _putchar(str2[i]);
+		 *	count += value;
+		 *}	
+		 */
+		count = _puts(str2);
+
 		va_end(arg2);
 		return (count);
 	}
 
-	i = 0;
-	while (*(str + i))
-	{
-		count += _putchar(str[i]);
-		i++;
-	}
+	count = _puts(str);
+
+	/*
+	 *i = 0;
+	 *while (*(str + i))
+	 *{
+	 *	count += _putchar(str[i]);
+	 *	i++;
+	 *}
+	 */
 	return (count);
 }
 
