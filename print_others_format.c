@@ -66,7 +66,7 @@ int print_lower_hexadecimal(va_list arg)
 int print_upper_hexadecimal(va_list arg)
 {
 	unsigned int value = va_arg(arg, unsigned int);
-	int base = 16, is_uppercase = 0, count = 1;
+	int base = 16, is_uppercase = 1, count = 0;
 	char *ptr = _uitoa(value, base, is_uppercase);
 
 	count += _puts(ptr);
