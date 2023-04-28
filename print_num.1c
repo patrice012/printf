@@ -4,6 +4,7 @@
 #include "main.h"
 
 
+
 /**
 * print_dec - print decimal
 * @args: argument list
@@ -64,8 +65,7 @@ int print_int(va_list arg)
 	int count = 0, i = 0;
 	long int numb = va_arg(arg, int);
 	int my_arr[10];
-	/*char x[1];*/
-	/*int size = 0;*/
+	char x[1];
 
 	if (numb < 0)
 	{
@@ -75,10 +75,24 @@ int print_int(va_list arg)
 	if (numb > 0)
 	{
 		/*Break the numbers apart and assign them to array*/
-		i = break_number_into_array(numb, my_arr);
+		while (numb != 0)
+		{
+			my_arr[i] = (numb % 10);
+			numb = numb / 10;
+			if (numb == 0)
+			{
+				break;
+			}
+			i++;
+		}
 
 		/*Write the contents of the array to stdout*/
-		count = write_array_to_stdout(my_arr, i);
+		for ((void)i; i >= 0; i--)
+		{
+			x[0] = ('0' + my_arr[i]);
+			count += _putchar(x[0]);
+		}
+		return (count);
 	}
 
 	if (numb == 0)
@@ -104,7 +118,7 @@ int break_number_into_array(long int numb, int *my_arr)
 
 	while (numb != 0)
 	{
-		*(my_arr + i) = (numb % 10);
+		my_arr[i] = (numb % 10);
 		numb = numb / 10;
 		if (numb == 0)
 			break;
